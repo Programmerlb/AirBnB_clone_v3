@@ -14,11 +14,11 @@ def stat_count():
     """"endpoint that retrieves the # of each objects by type"""
     count_stats = {
         'amenities': storage.count('Amenity'),
-        'cities': storage.count('Cities'),
-        'places': storage.count('Places'),
+        'cities': storage.count('City'),
+        'places': storage.count('Place'),
         'reviews': storage.count('Review'),
-        'states': storage.count('States'),
-        'users': storage.count('Users')
+        'states': storage.count('State'),
+        'users': storage.count('User')
     }
     return jsonify(count_stats)
 
