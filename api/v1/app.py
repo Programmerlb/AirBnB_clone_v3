@@ -6,7 +6,7 @@ import os
 from models import storage
 from flask import Flask, Blueprint, jsonify, make_response
 from flask_cors import CORS
-from ap1.v1.views import app_views
+from api.v1.views import app_views
 
 
 app = Flask(__name__)
