@@ -10,7 +10,7 @@ def stat_return():
 
 @app_views.route('/stats', methods=['GET'], strict_slashes=False)
 def stat_count():
-    """"endpoint that retrieves the number of each objects by type"""
+    """"endpoint that retrieves the # of each objects by type"""
     count_stats = {
         'amenities': storage.count('Amenity'),
         'cities': storage.count('Cities'),
