@@ -8,6 +8,7 @@ def stat_return():
     """return json status: OK"""
     return jsonify({"status": "OK"})
 
+
 @app_views.route('/stats', methods=['GET'], strict_slashes=False)
 def stat_count():
     """"endpoint that retrieves the # of each objects by type"""
@@ -20,6 +21,7 @@ def stat_count():
         'users': storage.count('Users')
     }
     return jsonify(count_stats)
+
 
 if __name__ == "__main__":
     pass
