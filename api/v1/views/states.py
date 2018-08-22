@@ -4,11 +4,12 @@
 '''
 from flask import jsonify, abort, request
 from api.v1.views import app_views
-from models import storage, State
+from models import storage
+from models.state import State
 
 
 @app_views.route('/states', methods=['GET'],
-                 strict_slashes-False)
+                 strict_slashes=False)
 def get_all_states():
     '''
         Retrieve all State objects
@@ -20,7 +21,7 @@ def get_all_states():
 
 
 @app_views.route('/states/<string:state_id>', methods=['GET'],
-                 strict_slashes-False)
+                 strict_slashes=False)
 def get_state(state_id):
     '''
         Retrieve one State object
@@ -33,7 +34,7 @@ def get_state(state_id):
 
 
 @app_views.route('/states/<string:state_id>', methods=['DELETE'],
-                 strict_slashes-False)
+                 strict_slashes=False)
 def delete_state(state_id):
     '''
         Delete a State object
@@ -47,7 +48,7 @@ def delete_state(state_id):
 
 
 @app_views.route('/states', methods=['POST'],
-                 strict_slashes-False)
+                 strict_slashes=False)
 def post_state(state_id):
     '''
         Create a State object
@@ -71,7 +72,7 @@ def put_state(state_id):
     if state is None:
         abort(404)
     if not request.json:
-        return jsonify("error": "Not a JSON"), 400
+        return jsonify({"error": "Not a JSON"}), 400
     for key, value in request.getjson():
         if key not in ['id', 'created_at', 'updated_at']:
             setattr(state, attr, value)
