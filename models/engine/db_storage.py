@@ -67,6 +67,36 @@ class DBStorage:
         '''
         self.__session.commit()
 
+    def get(self, cls, id):
+        '''
+            Retrieve one object
+        '''
+        obj_list = self.__session.query(eval(cls)).all()
+        for obj in obj_list:
+            if obj.id == str(id):
+                return obj
+        return None
+
+    def count(self, cls=None):
+        '''
+           Count the number of objects in storage
+        '''
+        count = 0
+        if cls is not None:
+            obj_list = self.__session.query(eval(cls)).all()
+            for obj in obj_list:
+                count += 1
+        else:
+            cls_list = ['User', 'State', 'City', 'Place', 'Amenity', 'Review']
+            for cls_name in cls_list:
+                try:
+                    obj_list = self.__session.query(eval(cls_name)).all()
+                    for obj in obj_list:
+                        count += 1
+                except Exception:
+                    continue
+        return count
+
     def delete(self, obj=None):
         '''
             Delete from current database session
