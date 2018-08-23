@@ -83,8 +83,8 @@ class FileStorage:
         """Gets the string representing the class name and object ID """
         string_dict = self.all(cls)
         for key, value in string_dict.items():
-            if key == cls + "." + id
-            return value
+            if key == cls + "." + id:
+                return value
 
     def count(self, cls=None):
         """returns the count of all objects in the storage"""
