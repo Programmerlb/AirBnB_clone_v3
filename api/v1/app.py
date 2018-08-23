@@ -2,12 +2,11 @@
 '''
     This module contains variable and methods used to connect to API
 '''
-import os
-from models import storage
 from flask import Flask, Blueprint, jsonify, make_response
-from flask_cors import CORS
 from api.v1.views import app_views
-
+from models import storage
+#from flask_cors import CORS
+import os
 
 app = Flask(__name__)
 app.register_blueprint(app_views, url_prefix="/api/v1")
