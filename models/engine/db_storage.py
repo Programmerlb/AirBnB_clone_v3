@@ -82,19 +82,8 @@ class DBStorage:
            Count the number of objects in storage
         '''
         count = 0
-        if cls is not None:
-            obj_list = self.__session.query(eval(cls)).all()
-            for obj in obj_list:
-                count += 1
-        else:
-            cls_list = ['User', 'State', 'City', 'Place', 'Amenity', 'Review']
-            for cls_name in cls_list:
-                try:
-                    obj_list = self.__session.query(eval(cls_name)).all()
-                    for obj in obj_list:
-                        count += 1
-                except Exception:
-                    continue
+        class_dict = self.all(cls)
+        count = len(class_dict)
         return count
 
     def delete(self, obj=None):
