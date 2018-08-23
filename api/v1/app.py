@@ -13,7 +13,7 @@ app.register_blueprint(app_views, url_prefix="/api/v1")
 cors = CORS(app, resources={'/*': {'origins': '0.0.0.0'}})
 host = os.getenv('HBNB_API_HOST', '0.0.0.0')
 port = int(os.getenv('HBNB_API_PORT', '5000'))
-
+app.config['JSONIFY_PRETTYPRINT_REGULAR'] = True
 
 @app.teardown_appcontext
 def teardown_app(code):
