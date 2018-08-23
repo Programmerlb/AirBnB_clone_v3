@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 '''
-    RESTful API actions for State objects
+    RESTful API actions for City objects
 '''
 from flask import jsonify, abort, request
 from api.v1.views import app_views
