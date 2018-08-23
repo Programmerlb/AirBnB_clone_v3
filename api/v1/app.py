@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 '''
-    This module contains variable and methods used to connect to API
+    This module contains variables and methods used to connect to API
 '''
 from flask import Flask, Blueprint, jsonify, make_response
 from api.v1.views import app_views
