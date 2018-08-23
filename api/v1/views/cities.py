@@ -5,24 +5,31 @@
 from flask import jsonify, abort, request
 from api.v1.views import app_views
 from models import storage
-from models.state import State
-from models.city import City
+from models import Amenity
+from models import City
+from models import Place
+from models import Review
+from models import State
+from models import User
+from models import base_model
 
 
 @app_views.route('/states/<state_id>/cities', methods=['GET'],
                  strict_slashes=False)
-def get_all_states(state_id):
+def get_all_cities(state_id):
     '''
         Retrieve all city objects
     '''
-    city_list = []
-    if state:
-        for city in state.cities:
-            city_list.append(city.to_dict())
+    try:
+        city_list = []
+        state_list = storage.all('City')
+        for key, value in stateinfo.items():
+            city_dict = value.to_dict()
+            if city_dict.get('state_id') == state_id:
+                city_list.append(city_dict)
         return jsonify(city_list)
-    else:
+    except BaseException:
         abort(404)
-
 
 @app_views.route('/cities/<city_id>', methods=['GET'],
                  strict_slashes=False)
