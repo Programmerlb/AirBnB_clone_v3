@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 '''
-    RESTful API actions for User object
+    RESTful API actions for user object
 '''
 from flask import jsonify, make_response, abort, request
 from api.v1.views import app_views
