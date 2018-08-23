@@ -49,14 +49,16 @@ def delete_state(state_id):
 
 @app_views.route('/states', methods=['POST'],
                  strict_slashes=False)
-def post_state(state_id):
+def post_state():
     '''
         Create a State object
     '''
     if not request.json:
-        return jsonify({"error": "Not a JSON"}), 400
+        abort(400)
+        return jsonify({"error": "Not a JSON"})
     if 'name' not in request.json:
-        return jsonify({"error": "Missing name"}), 400
+        abort(400)
+        return jsonify({"error": "Missing name"})
     new_state = State(**request.get_json())
     new_state.save()
     return jsonify(new_state.to_dict()), 201
@@ -73,8 +75,8 @@ def put_state(state_id):
         abort(404)
     if not request.json:
         return jsonify({"error": "Not a JSON"}), 400
-    for key, value in request.getjson():
+    for key, value in request.get_json().items():
         if key not in ['id', 'created_at', 'updated_at']:
-            setattr(state, attr, value)
+            setattr(state, key, value)
     state.save()
     return jsonify(state.to_dict())
