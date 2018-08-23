@@ -70,8 +70,8 @@ def post_place(city_id):
     user = storage.get('User', request.json()['user_id'])
     if not user:
         abort(404)
-    if 'name' not in request.get_json():
-        return jsonify("error": "Missing name"), 400
+    if 'name' not in request_get.json():
+        return jsonify({"error": "Missing name"}), 400
 
     new_place = Place(**request.json())
     new_place.city_id = city_id

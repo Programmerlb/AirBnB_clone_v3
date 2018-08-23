@@ -31,6 +31,7 @@ def get_all_cities(state_id):
     except BaseException:
         abort(404)
 
+
 @app_views.route('/cities/<city_id>', methods=['GET'],
                  strict_slashes=False)
 def get_city(city_id):
@@ -62,7 +63,7 @@ def delete_city(city_id):
                  strict_slashes=False)
 def post_city(state_id):
     '''
-        Create a State object
+        Create a City object
     '''
     if not request.json:
         return jsonify({"error": "Not a JSON"}), 400
