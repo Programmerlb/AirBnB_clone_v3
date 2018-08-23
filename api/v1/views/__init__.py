@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" initializes views directory  """
+""" initializes view of directory  """
 from flask import Blueprint
 
 
